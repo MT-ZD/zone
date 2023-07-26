@@ -7,6 +7,9 @@
 	import Button from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import Icon from '@smui/textfield/icon';
+	import { page } from '$app/stores';
+	import copy from 'copy-to-clipboard';
+	import IconButton from '@smui/icon-button';
 
 	export let data: PageData;
 
@@ -151,5 +154,17 @@
 			</Textfield>
 			<Button class="md:ml-4 md:mt-0 mt-4" variant="raised" type="submit">Get Time!</Button>
 		</form>
+		<Textfield
+			input$readonly
+			variant="filled"
+			class="w-full mt-4"
+			value={$page.url.href}
+			label="URL"
+			type="text"
+		>
+			<IconButton on:click={() => copy($page.url.href)} class="material-icons" slot="trailingIcon">
+				content_copy
+			</IconButton>
+		</Textfield>
 	</Paper>
 </div>
