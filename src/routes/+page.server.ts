@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import type { PageServerLoad } from './$types';
-import { lookup } from 'geoip-lite';
+import pkg from 'geoip-lite';
+const { lookup } = pkg;
 
 export const load = (async (params) => {
 	const zone = params.url.searchParams.get('zone');
