@@ -5,7 +5,6 @@
 	import { goto } from '$app/navigation';
 	import Paper from '@smui/paper';
 	import Button from '@smui/button';
-	import Autocomplete from '@smui-extra/autocomplete';
 	import Textfield from '@smui/textfield';
 	import Icon from '@smui/textfield/icon';
 
@@ -56,6 +55,7 @@
 		)} {yourTime.zoneName} - Your Time"
 	/>
 	<meta property="og:site_name" content="Time Zone Converter" />
+	<meta property="og:image" content="/favicon.png" />
 </svelte:head>
 
 <div class="max-w-4xl w-full m-auto grid gap-4 p-8">
