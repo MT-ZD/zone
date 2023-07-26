@@ -1,13 +1,12 @@
 import { DateTime } from 'luxon';
 import type { PageServerLoad } from './$types';
-import pkg from 'geoip-lite';
-const { lookup } = pkg;
+import { lookup } from 'fast-geoip';
 
 export const load = (async (params) => {
 	const zone = params.url.searchParams.get('zone');
 	const time = params.url.searchParams.get('time');
 
-	const geo = lookup(params.getClientAddress());
+	const geo = await lookup(params.getClientAddress());
 
 	const theirTime = time
 		? DateTime.fromFormat(time, 'HH:mm', {

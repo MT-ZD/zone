@@ -43,7 +43,7 @@
 		"@smui/button": "^7.0.0-beta.14",
 		"@smui/paper": "^7.0.0-beta.14",
 		"@smui/textfield": "^7.0.0-beta.14",
-		"geoip-lite": "^1.4.7",
+		"fast-geoip": "^1.1.88",
 		"luxon": "^3.3.0",
 		"smui-theme": "^7.0.0-beta.14"
 	}
