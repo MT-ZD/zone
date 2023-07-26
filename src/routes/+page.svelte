@@ -167,4 +167,23 @@
 			</IconButton>
 		</Textfield>
 	</Paper>
+	<div class="text-gray-500 text-sm">
+		Created by Mateusz Zdrzałek&nbsp;-&nbsp;<a
+			href="https://mtzd.pro"
+			class="hover:!text-[#ff3e00] underline !text-inherit"
+			target="_blank"
+		>
+			mtzd.pro
+		</a>
+
+		&nbsp;|<img src="/github-mark-white.svg" alt="GitHub logo" class="h-4 inline mx-2" />
+
+		<a
+			href="https://github.com/MT-ZD/zone"
+			class="hover:!text-[#ff3e00] underline !text-inherit"
+			target="_blank"
+		>
+			GitHub Project
+		</a>
+	</div>
 </div>
