@@ -2571,6 +2571,10 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
+"timezones.json@https://github.com/dmfilipenko/timezones.json":
+  version "1.7.0"
+  resolved "https://github.com/dmfilipenko/timezones.json#21527b692b159e751d92bc477d678a62eedd7a39"
+
 tinybench@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/tinybench/-/tinybench-2.5.0.tgz#4711c99bbf6f3e986f67eb722fed9cddb3a68ba5"

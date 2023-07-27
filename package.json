@@ -11,8 +11,7 @@
 		"test": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"prepare": "yarn smui-theme-light && yarn smui-theme-dark",
-		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
+		"prepare": "yarn smui-theme-dark",
 		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark"
 	},
 	"devDependencies": {
@@ -47,6 +46,7 @@
 		"copy-to-clipboard": "^3.3.3",
 		"fast-geoip": "^1.1.88",
 		"luxon": "^3.3.0",
-		"smui-theme": "^7.0.0-beta.14"
+		"smui-theme": "^7.0.0-beta.14",
+		"timezones.json": "https://github.com/dmfilipenko/timezones.json"
 	}
 }

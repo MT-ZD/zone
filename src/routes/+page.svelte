@@ -10,6 +10,8 @@
 	import { page } from '$app/stores';
 	import copy from 'copy-to-clipboard';
 	import IconButton from '@smui/icon-button';
+	import Autocomplete from '@smui-extra/autocomplete';
+	import timezones, { type Timezone } from 'timezones.json';
 
 	export let data: PageData;
 
@@ -35,11 +37,25 @@
 		setLiveTime();
 	});
 
-	let inputZone: string = '';
+	function getUTCZoneName(timezone: Timezone): string {
+		const sign = Math.sign(timezone.offset) > 0 ? '+' : '-';
+		const offset = Math.abs(timezone.offset);
+
+		return `UTC${sign}${offset}`;
+	}
+
+	function getZoneName(timezone: Timezone): string {
+		return timezone.abbr === 'U' ? getUTCZoneName(timezone) : timezone.abbr;
+	}
+
+	let inputZone: Timezone =
+		timezones.find((zone) =>
+			zone.utc.includes(Intl.DateTimeFormat().resolvedOptions().timeZone ?? 'Europe/London')
+		) ?? timezones[0];
 	let inputTime: string = '';
 
 	function getTime() {
-		goto(`?zone=${encodeURIComponent(inputZone)}&time=${inputTime}`);
+		goto(`?zone=${encodeURIComponent(getUTCZoneName(inputZone))}&time=${inputTime}`);
 	}
 </script>
 
@@ -62,7 +78,7 @@
 </svelte:head>
 
 <div class="max-w-4xl w-full m-auto grid gap-4 p-8">
-	<Paper class="w-full">
+	<Paper class="w-full" elevation={10}>
 		<div class="text-3xl font-bold mb-4">Converted Time</div>
 
 		<div class="grid grid-cols-2">
@@ -132,16 +148,16 @@
 			on:submit|preventDefault={getTime}
 			class="grid grid-flow-row md:grid-flow-col gap-4 md:gap-2 items-center"
 		>
-			<Textfield
-				required
-				variant="filled"
-				class="w-full"
+			<Autocomplete
+				textfield$required
+				textfield$variant="filled"
+				textfield$class="w-full"
 				bind:value={inputZone}
+				getOptionLabel={(option) => `${getZoneName(option)} ${option.text}`}
 				label="Timezone"
-				type="text"
-			>
-				<Icon class="material-icons" slot="leadingIcon">public</Icon>
-			</Textfield>
+				options={timezones}
+				textfield$type="text"
+			/>
 			<Textfield
 				required
 				variant="filled"
@@ -187,3 +203,9 @@
 		</a>
 	</div>
 </div>
+
+<style>
+	:global(.mdc-text-field__input::-webkit-calendar-picker-indicator) {
+		display: initial !important;
+	}
+</style>
