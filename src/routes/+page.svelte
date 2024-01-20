@@ -23,6 +23,7 @@
 		: DateTime.now();
 	$: yourTime = theirTime.setZone('local');
 
+	// Live time handler
 	onMount(() => {
 		function setLiveTime() {
 			theirLiveTime = DateTime.now()
